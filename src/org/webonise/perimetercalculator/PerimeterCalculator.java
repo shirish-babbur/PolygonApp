@@ -1,18 +1,28 @@
 package org.webonise.perimetercalculator;
 
-public class PerimeterCalculator implements PolygonCalculator{
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class PerimeterCalculator implements PolygonCalculator {
+    private static Logger LOGGER = Logger.getLogger(PerimeterCalculator.class.getName());
+    private LoggerManager loggerManager = new LoggerManager();
     private int noOfSides;
-    private Double sideLength,perimeter;
-    public PerimeterCalculator(int noOfSides,double sideLength){
-        this.noOfSides=noOfSides;
-        this.sideLength=sideLength;
+    private double sideLength;
+    private double perimeter;
+
+    public PerimeterCalculator(int noOfSides, double sideLength) {
+        LOGGER = loggerManager.getLOGGER(LOGGER);
+        this.noOfSides = noOfSides;
+        this.sideLength = sideLength;
     }
+
     @Override
     public void calculator() {
-        perimeter=noOfSides*sideLength;
+        perimeter = noOfSides * sideLength;
     }
+
     @Override
     public void printResult() {
-        System.out.println("Perimeter :"+perimeter);
+        LOGGER.log(Level.FINE, "Perimeter :" + perimeter);
     }
 }
