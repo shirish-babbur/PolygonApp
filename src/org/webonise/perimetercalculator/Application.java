@@ -18,7 +18,7 @@ public class Application {
         LOGGER.log(Level.FINE, "Enter No of Sides and Length of Side");
         noOfSides = input.nextInt();
         sideLength = input.nextDouble();
-        if (noOfSides >= UPPERBOUND && noOfSides <= LOWERBOUND) {
+        if (validateSides(noOfSides)) {
             PolygonCalculator polygon = new InternalAngleCaculator(noOfSides);
             polygon.calculator();
             polygon.printResult();
@@ -26,7 +26,13 @@ public class Application {
             polygon.calculator();
             polygon.printResult();
         } else {
-            LOGGER.log(Level.WARNING, "No of sides must be between 3 to 8");
+            LOGGER.log(Level.INFO, "No of Sides must be between 3 and 8.");
         }
+    }
+
+    private boolean validateSides(int noOfSides) {
+        if (noOfSides < UPPERBOUND) return false;
+        if (noOfSides > LOWERBOUND) return false;
+        return true;
     }
 }
