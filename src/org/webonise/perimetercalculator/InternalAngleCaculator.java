@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 public class InternalAngleCaculator implements PolygonCalculator {
     private static Logger LOGGER = Logger.getLogger(InternalAngleCaculator.class.getName());
     private LoggerManager loggerManager = new LoggerManager();
-    private final static int pie = 180;
+    private final static int PIE = 180;
     private int noOfSides;
     private int sumOfAngles;
 
@@ -17,7 +17,7 @@ public class InternalAngleCaculator implements PolygonCalculator {
 
     @Override
     public void calculator() {
-        sumOfAngles = pie * (noOfSides - 2);
+        sumOfAngles = PIE * (noOfSides - 2);
     }
 
     @Override
